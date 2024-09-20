@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Message</title>
+</head>
+
+<body>
+    <script>
+        
+       
+        // 템플릿 리터럴 방식
+        function getMessage(name) {
+            return `Hello, ${name}!`;
+        }
+
+        const message = getMessage('Sang kyoung');
+        document.write(message);  // 헬로 상경
+
+        function displayDone() {
+            console.log('실행!!');
+        }
+
+
+        function name() {
+            document.write('안녕하세요! 저는 신상경입니다.<br>');
+        }
+        
+        function major() {
+            document.write('제 전공은 컴퓨터 공학과입니다.<br>');
+        }
+        
+        function develop() {
+            document.write('저는 백엔드 개발에 관심이 있습니다.<br>');
+        }
+        
+        let funcs = [name, major, develop];
+        let index = 0;
+        
+        // 3초마다 다른 자기소개 함수 실행
+        setInterval(() => {
+            document.body.innerHTML = '';  // 기존 내용을 지우기
+            funcs[index]();  // 현재 함수 실행
+            index = (index + 1) % funcs.length;  // 인덱스를 업데이트해 3개의 함수 반복
+        }, 3000);
+        
+    </script>
+</body>
+
+</html>
