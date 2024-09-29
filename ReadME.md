@@ -1,5 +1,5 @@
 <p align='center'>
-    <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=기초 웹%20개발론&fontSize=90&animation=fadeIn&fontAlignY=38&desc=2024%202학기%20Kakao Track&descAlignY=51&descAlign=62"/>
+    <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=기초웹%20개발론&fontSize=90&animation=fadeIn&fontAlignY=38&desc=2024%202학기%20KakaoTrack&descAlignY=51&descAlign=62"/>
 </p>
 
 <p align='center'>
