@@ -19,7 +19,7 @@ if (jarWalls) {
         this.classList.remove('drag-over');
         this.style.transform = 'scale(1)';
         this.style.backgroundColor = '';
-        console.log('Drop 이벤트 발생!'); // 여기에 추가
+       
         
         const draggedPlant = document.querySelector('.plant.dragging');
         if (draggedPlant) {
@@ -35,7 +35,7 @@ if (jarWalls) {
             
             Add_Index++;
             draggedPlant.style.zIndex = Add_Index;
-            console.log('🌿 식물이 성공적으로 테라리움에 추가되었습니다!'); // 여기에 추가
+            
         }
     });
 
@@ -88,10 +88,6 @@ for (let i = 1; i <= 14; i++) {
             this.style.filter = '';
             this.style.boxShadow = '';
             
-            const jarWalls = document.querySelector('.jar-walls');
-            if (jarWalls && jarWalls.contains(this)) {
-                console.log('✨ 드래그가 성공적으로 완료되었습니다!'); // 여기에 추가
-            }
         });
 
         // Pointer 드래그 기능 추가
