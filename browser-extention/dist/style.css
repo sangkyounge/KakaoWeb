@@ -1,0 +1,196 @@
+/* CSS 초기화 */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,button{margin:0;padding:0}
+fieldset,img{border:0 none}
+dl,ul,ol,menu,li{list-style:none}
+blockquote, q{quotes:none}
+blockquote:before, blockquote:after,q:before, q:after{content:'';content:none}
+input,select,textarea,button{vertical-align:middle;font-size:100%}
+button{border:0 none;background-color:transparent;cursor:pointer}
+table{border-collapse:collapse;border-spacing:0}
+body{-webkit-text-size-adjust:none}
+input[type='text'],input[type='password'],input[type='submit'],input[type='search'],input[type='tel'],input[type='email'],html input[type='button'],input[type='reset']{-webkit-appearance:none;border-radius:0}
+input[type='search']::-webkit-search-cancel-button{-webkit-appearance:none}
+body{background:#fff}
+body,th,td,input,select,textarea,button{font-size:14px;line-height:1.5;font-family:'Malgun Gothic','맑은 고딕',sans-serif;color:#333}
+a{color:#333;text-decoration:none}
+a:active, a:hover{text-decoration:none}
+address,caption,cite,code,dfn,em,var{font-style:normal;font-weight:normal}
+
+/* 컨테이너 스타일 */
+.container {
+   width: 250px;
+   padding: 15px;
+   text-align: center;
+   background-color: white;
+}
+
+/* 이미지 스타일 */
+img {
+   width: 180px;
+   height: auto;
+   margin: 0 auto 15px;
+   display: block;
+}
+
+/* 제목 스타일 */
+h1 {
+   font-size: 16px;
+   margin-bottom: 15px;
+   color: #333;
+   font-weight: 700;
+   line-height: 1.4;
+   text-align: center;
+}
+
+h2 {
+   font-size: 14px;
+   margin-bottom: 20px;
+   color: #333;
+   text-align: center;
+   font-weight: 600;
+}
+
+/* 폼 스타일 */
+.form-data {
+   margin-top: 15px;
+   text-align: center;
+}
+
+.form-data div {
+   margin-bottom: 20px;
+   text-align: center;
+}
+
+label {
+   display: block;
+   margin-bottom: 8px;
+   color: #333;
+   font-size: 13px;
+   font-weight: 600;
+   text-align: center;
+}
+
+input[type="text"] {
+   width: 80%;
+   padding: 8px;
+   border: none;
+   border-radius: 25px !important;
+   background-color: #f1f1f1;
+   box-sizing: border-box;
+   font-size: 13px;
+   margin: 0 auto;
+   display: block;
+   height: 40px;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+}
+
+/* 버튼 스타일 */
+.search-btn {
+   width: 80px;
+   padding: 8px;
+   background-color: #007AFF;
+   color: white;
+   border-radius: 25px;
+   margin: 15px auto 0;
+   font-size: 13px;
+   font-weight: 600;
+   cursor: pointer;
+   display: block;
+}
+
+.search-btn:hover {
+   background-color: #0066CC;
+}
+
+/* 결과 영역 */
+.result {
+   display: none;
+}
+
+.loading {
+   text-align: center;
+   margin: 20px 0;
+   color: #333;
+}
+
+.errors {
+   color: #ff6b6b;
+   margin: 10px 0;
+}
+
+.result-container {
+   background-color: #f5f5f5;
+   padding: 15px;
+   border-radius: 8px;
+   margin-top: 20px;
+}
+
+.result-container p {
+   margin-bottom: 10px;
+}
+
+.clear-btn {
+   width: 80px;
+   padding: 8px;
+   background-color: #ff6b6b;
+   color: white;
+   border-radius: 25px;
+   margin: 15px auto 0;
+   font-size: 13px;
+   font-weight: 600;
+   cursor: pointer;
+   display: block;
+}
+@media (prefers-color-scheme:light) {
+    /* 전체 배경 */
+    body {
+        background-color: #1a1a1a !important;
+        color: #ffffff !important;
+    }
+    
+    /* 컨테이너 배경 */
+    .container {
+        background-color: #1a1a1a !important;
+    }
+    
+    /* 텍스트 색상 */
+    h1, h2, label {
+        color: #ffffff !important;
+    }
+    
+    /* 입력 필드 */
+    input[type="text"] {
+        background-color: #333333 !important;
+        color: #ffffff !important;
+    }
+    
+    /* placeholder 색상 */
+    input[type="text"]::placeholder {
+        color: #888888 !important;
+    }
+    
+    /* result 컨테이너 */
+    .result-container {
+        background-color: #333333 !important;
+    }
+    
+    /* result 텍스트 */
+    .result-container p,
+    .result-container strong,
+    .loading {
+        color: #ffffff !important;
+    }
+    
+    /* 버튼 색상 */
+    .search-btn {
+        background-color: #0A84FF !important;
+        color: #ffffff !important;
+    }
+    
+    .search-btn:hover {
+        background-color: #0071E3 !important;
+    }
+}
+

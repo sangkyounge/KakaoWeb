@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Carbon Trigger Extension",
+    "description": "Track your carbon usage",
+    "version": "1.0",
+    "action": {
+      "default_popup": "index.html"
+    },
+    "icons": {
+      "48": "plants-people.png"
+    },
+    "permissions": []
+  }
