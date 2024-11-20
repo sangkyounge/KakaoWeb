@@ -1,0 +1,45 @@
+/* 기존 스타일 유지 + 새 스타일 추가 */
+
+/* 데이터 카드 스타일 추가 */
+.result-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+/* 각 데이터 항목 스타일링 */
+.result-container p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* 입력 필드의 개선 */
+input[type="text"], .api-key {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    color: #333;
+}
+
+/* 버튼 hover 효과 */
+button:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+/* 다크 모드에서 데이터 카드 스타일링 */
+@media (prefers-color-scheme: dark) {
+    .result-container {
+        background-color: #2c2c2c;
+        color: #e0e0e0;
+        box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+    }
+}
