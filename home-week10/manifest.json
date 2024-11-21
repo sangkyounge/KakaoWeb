@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Weather & Fun Info",
+    "version": "1.0",
+    "description": "Display weather, random user and programming jokes",
+    "permissions": [
+      "activeTab",
+      "https://api.openweathermap.org/",
+      "https://randomuser.me/",
+      "https://v2.jokeapi.dev/"
+    ],
+    "browser_action": {
+      "default_popup": "index.html"
+    }
+  }

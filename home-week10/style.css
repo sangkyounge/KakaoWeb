@@ -1,0 +1,137 @@
+body {
+    width: 400px;
+    margin: 0;
+    padding: 15px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    width: 100%;
+}
+
+header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: #444;
+    margin: 0 0 15px 0;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.api-input {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.api-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.api-input button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.api-input button:hover {
+    background-color: #45a049;
+}
+
+.weather-details {
+    text-align: center;
+}
+
+.temp {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #333;
+}
+
+.desc {
+    color: #666;
+    text-transform: capitalize;
+    margin: 5px 0;
+}
+
+.extra-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.user-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 5px 0;
+}
+
+.user-email, .user-location {
+    color: #666;
+    margin: 5px 0;
+}
+
+.joke-text {
+    color: #333;
+    line-height: 1.4;
+    margin: 5px 0;
+}
+
+.joke-answer {
+    color: #666;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+button {
+    transition: background-color 0.3s ease;
+}
+
+.weather-content, .user-content, .joke-content {
+    min-height: 50px;
+}

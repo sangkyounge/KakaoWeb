@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>10주차 과제</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Today's Info</h1>
+        </header>
+        
+        <main>
+            <section class="weather-section">
+                <div class="card">
+                    <h2>서울 날씨</h2>
+                    <div class="api-input">
+                        <input type="text" id="apiKey" placeholder="OpenWeather API Key 입력하시오.">
+                        <button onclick="updateApiKey()">Apply</button>
+                    </div>
+                    <div class="weather-content">API 키를 입력해주세요!</div>
+                </div>
+            </section>
+
+            <section class="random-section">
+                <div class="card">
+                    <h2>랜덤 이름</h2>
+                    <div class="user-content"></div>
+                </div>
+            </section>
+
+            <section class="joke-section">
+                <div class="card">
+                    <h2>오늘의 농담!</h2>
+                    <div class="joke-content"></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Data from OpenWeather, RandomUser, and JokeAPI</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
