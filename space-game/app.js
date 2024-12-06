@@ -1,4 +1,7 @@
 // 1. 이미지 로딩 함수
+// 15페이지부터 다시
+// Life 뜨게 수정 필요
+
 function loadTexture(path) {
     return new Promise((resolve) => {
         const img = new Image();
@@ -67,20 +70,44 @@ class GameObject {
     }
 }
 
+function drawLife() {
+    const START_POS = canvas.width - 180;
+    for (let i = 0; i < hero.life; i++) {
+        ctx.drawImage(
+            lifeImg,
+            START_POS + (45 * (i + 1)),
+            canvas.height - 37);
+    }
+}
+function drawPoints() {
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "red";
+    ctx.textAlign = "left";
+    drawText("Points: " + hero.points, 10, canvas.height - 20);
+}
+function drawText(message, x, y) {
+    ctx.fillText(message, x, y);
+}
+
 // 5. 영웅 클래스
 class Hero extends GameObject {
+
+
     constructor(x, y) {
         super(x, y);
         this.width = 99;
         this.height = 75;
         this.type = 'Hero';
         this.cooldown = 0;
-        
+
+        this.life = 3;
+        this.points = 0;
+
         // 메인 우주선과의 간격과 크기 비율 설정
         const WING_SPACING = 40;
         const WING_SCALE = 0.5;
         const companionWidth = this.width * WING_SCALE;
-        
+
         this.companions = [
             new Companion(x - WING_SPACING - companionWidth, y + 10, true),
             new Companion(x + this.width + WING_SPACING, y + 10, false)
@@ -127,6 +154,18 @@ class Hero extends GameObject {
             }
         });
     }
+
+    decrementLife() {
+        this.life--;
+        if (this.life === 0) {
+            this.dead = true;
+        }
+    }
+
+    incrementPoints() {
+        this.points += 100;
+    }
+
 }
 
 // 6. 컴패니언 클래스
@@ -227,7 +266,7 @@ class Explosion extends GameObject {
         this.frame = 0;
         this.totalFrames = 10;
         this.img = explosionImg;
-        
+
         let id = setInterval(() => {
             this.frame++;
             if (this.frame >= this.totalFrames) {
@@ -281,7 +320,7 @@ function drawGameObjects(ctx) {
 function updateGameObjects() {
     const enemies = gameObjects.filter(go => go.type === "Enemy");
     const lasers = gameObjects.filter(go => go.type === "Laser" || go.type === "CompanionLaser");
-    
+
     if (hero) {
         hero.updateCompanions();
     }
@@ -299,6 +338,13 @@ function updateGameObjects() {
     });
 
     gameObjects = gameObjects.filter(go => !go.dead);
+
+    enemies.forEach(enemy => {
+        const heroRect = hero.rectFromGameObject();
+        if (intersectRect(heroRect, enemy.rectFromGameObject())) {
+            eventEmitter.emit(Messages.COLLISION_ENEMY_HERO, { enemy });
+        }
+    })
 }
 
 // 15. 게임 초기화 함수
@@ -332,6 +378,42 @@ function initGame() {
         first.dead = true;
         second.dead = true;
     });
+
+    eventEmitter.on(Messages.COLLISION_ENEMY_LASER, (_, { first, second }) => {
+        first.dead = true;
+        second.dead = true;
+        hero.incrementPoints();
+    })
+    eventEmitter.on(Messages.COLLISION_ENEMY_HERO, (_, { enemy }) => {
+        enemy.dead = true;
+        hero.decrementLife();
+    });
+
+    eventEmitter.on(Messages.COLLISION_ENEMY_LASER, (_, { first, second }) => {
+        first.dead = true;
+        second.dead = true;
+        hero.incrementPoints();
+        if (isEnemiesDead()) {
+        eventEmitter.emit(Messages.GAME_END_WIN);
+        }
+        });
+        eventEmitter.on(Messages.COLLISION_ENEMY_HERO, (_, { enemy }) => {
+        enemy.dead = true;
+        hero.decrementLife();
+        if (isHeroDead()) {
+        eventEmitter.emit(Messages.GAME_END_LOSS);
+        return; // loss before victory
+        }
+        if (isEnemiesDead()) {
+        eventEmitter.emit(Messages.GAME_END_WIN);
+        }
+        });
+        eventEmitter.on(Messages.GAME_END_WIN, () => {
+        endGame(true);
+        });
+        eventEmitter.on(Messages.GAME_END_LOSS, () => {
+        endGame(false);
+        });
 }
 
 // 16. 전역 변수 선언
@@ -363,9 +445,9 @@ window.onload = async () => {
     enemyImg = await loadTexture("asset/enemyShip.png");
     laserImg = await loadTexture("asset/laserRed.png");
     explosionImg = await loadTexture("asset/laserGreenShot.png");
-    
+    lifeImg = await loadTexture("asset/life.png");
     initGame();
-    
+
     let gameLoopId = setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "black";
@@ -373,4 +455,17 @@ window.onload = async () => {
         drawGameObjects(ctx);
         updateGameObjects();
     }, 100);
+
+    drawPoints();
+    drawLife();
 };
+
+function isHeroDead() {
+    return hero.life <= 0;
+    }
+    function isEnemiesDead() {
+    const enemies = gameObjects.filter((go) => go.type === "Enemy" &&
+    !go.dead);
+    return enemies.length === 0;
+    }
+
